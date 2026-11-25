@@ -64,6 +64,14 @@ nav a:hover,nav a:focus-visible{opacity:1;color:var(--gold);outline:none}
 .poem{background:var(--card);border-radius:10px;padding:22px 24px}
 .poem p{margin:8px 0 0;font-size:16px}
 .alt{border-top:1px solid var(--line)}
+.memoir{background:var(--gold);color:#173424}
+.memoir .wrap{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:28px;align-items:center}
+.memoir h2{font-size:clamp(34px,5vw,58px);margin:6px 0 12px}
+.memoir p{margin:0;max-width:56ch;font-size:18px}
+.memoir .label{color:#173424;opacity:.8}
+.memoir .big{display:flex;align-items:center;justify-content:center;min-height:64px;padding:0 28px;border-radius:999px;background:#173424;color:#fff;font:700 18px "Source Sans 3",sans-serif;text-decoration:none;text-align:center}
+.memoir .big:hover,.memoir .big:focus-visible{background:#0f2418;outline:3px solid #fff;outline-offset:3px}
+@media(max-width:820px){.memoir .wrap{grid-template-columns:minmax(0,1fr)}}
 footer{background:var(--jacket2);color:#cfdad2;font:15px "Source Sans 3",sans-serif}
 footer .wrap{display:flex;gap:12px 30px;flex-wrap:wrap;justify-content:space-between}
 .draft{font:600 13px "Source Sans 3",sans-serif;color:var(--soft);border:1px dashed var(--line);border-radius:6px;padding:6px 10px;display:inline-block;margin-bottom:18px}
@@ -75,7 +83,7 @@ footer .wrap{display:flex;gap:12px 30px;flex-wrap:wrap;justify-content:space-bet
 
 <nav><div class="wrap">
   <b>Shelby Yastrow</b>
-  <a href="#life">Life story</a><a href="#books">Books</a><a href="#poems">Poems</a><a href="#stories">Stories</a><a href="#more">More</a>
+  <a href="#memoir">Memoir</a><a href="#life">Life story</a><a href="#books">Books</a><a href="#poems">Poems</a><a href="#stories">Stories</a><a href="#more">More</a>
 </div></nav>
 
 <header class="band jacket"><div class="wrap">
@@ -112,6 +120,15 @@ footer .wrap{display:flex;gap:12px 30px;flex-wrap:wrap;justify-content:space-bet
     </g>
   </svg>
 </div></header>
+
+<section id="memoir" class="band memoir"><div class="wrap">
+  <div>
+    <div class="label">The memoir, now being written</div>
+    <h2>Kewanee, a Law Degree, McD and Me</h2>
+    <p>Shelby is writing his own story, in his own words, from the corn fields of Kewanee to the courtroom, the McDonald's boardroom and ninety-plus years of tales that only get better with each telling. Chapters will appear here as he finishes them.</p>
+  </div>
+  <a class="big" href="#memoir">Read the memoir (first chapters coming soon)</a>
+</div></section>
 
 <section id="life" class="band"><div class="wrap">
   <h2>The Shelby Yastrow life story</h2>
