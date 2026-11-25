@@ -54,6 +54,7 @@ nav a:hover,nav a:focus-visible{opacity:1;color:var(--gold);outline:none}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:22px}
 .book{display:grid;grid-template-columns:96px minmax(0,1fr);gap:18px;background:var(--card);border-radius:10px;padding:20px}
 .cover{aspect-ratio:2/3;border-radius:3px 6px 6px 3px;display:flex;align-items:flex-end;padding:8px;font:400 15px/1.1 "Libre Caslon Display",serif;color:#fff;box-shadow:inset 6px 0 0 rgba(0,0,0,.25),0 6px 14px rgba(0,0,0,.2)}
+.coverimg{width:96px;aspect-ratio:2/3;object-fit:cover;border-radius:3px 6px 6px 3px;box-shadow:0 6px 14px rgba(0,0,0,.2);display:block}
 .book p{margin:6px 0 0;font-size:16px}
 .chap{background:var(--card);border-radius:10px;overflow:hidden;display:flex;flex-direction:column}
 .chap img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;background:#222}
@@ -190,7 +191,7 @@ const LIFE = [
   ['Scottsdale today','Shady Glen','Now living in Scottsdale, writing poems, emailing new Shady Glen chapters to the family, and reading Mark Twain biographies for professional reasons.']
 ];
 const BOOKS = [
-  ['Undue Influence','#8e2b23','His first novel','Within two weeks of Benjamin Stillman\'s death, six sets of lawyers are fighting over his money. A probate thriller set in Chicago\'s law offices, a quack cancer clinic and a judge\'s chambers. The jacket carries a note from Scott Turow.'],
+  ['Undue Influence','#8e2b23','His first novel','Within two weeks of Benjamin Stillman\'s death, six sets of lawyers are fighting over his money. A probate thriller set in Chicago\'s law offices, a quack cancer clinic and a judge\'s chambers. Scott Turow called it “thoroughly enjoyable… a suspenseful story.”','img/undue-influence.jpg'],
   ['Under Oath','#0f2c4a','1994, reissued 2011','A doctor\'s reputation, a mother\'s grief, and a malpractice trial that could destroy everyone involved. A courtroom novel set in Chicago and the Midwest.'],
   ['Bad Lies','#3f6b2c','','A perfect intersection of law and golf.'],
   ['Vision to Legacy: The Great Clips Story','#5b2a6e','Nonfiction, 2013','The story of Great Clips, written by Shelby during his 20 years on the company’s board of directors.']
@@ -211,7 +212,7 @@ const MORE = [
 ];
 const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 document.getElementById('tl').innerHTML = LIFE.map(([l,h,p]) => `<li><span class="label">${esc(l)}</span><h3>${esc(h)}</h3><p>${esc(p)}</p></li>`).join('');
-document.getElementById('bookgrid').innerHTML = BOOKS.map(([t,c,l,p]) => `<article class="book"><div class="cover" style="background:${c}">${esc(t.split(':')[0])}</div><div><div class="label">${esc(l)}</div><h3>${esc(t)}</h3><p>${esc(p)}</p></div></article>`).join('');
+document.getElementById('bookgrid').innerHTML = BOOKS.map(([t,c,l,p,img]) => `<article class="book">${img ? `<img class="coverimg" src="${img}" alt="Cover of ${esc(t)}" loading="lazy">` : `<div class="cover" style="background:${c}">${esc(t.split(':')[0])}</div>`}<div><div class="label">${esc(l)}</div><h3>${esc(t)}</h3><p>${esc(p)}</p></div></article>`).join('');
 document.getElementById('poemgrid').innerHTML = POEMS.map(([t,p]) => `<article class="poem"><h3>${esc(t)}</h3><p>${esc(p)}</p></article>`).join('');
 document.getElementById('chapgrid').innerHTML = CHAPS.map(([n,t,u]) => `<article class="chap"><img src="img/ch${n}.jpg" alt="Title card for chapter ${n}, ${esc(t)}" loading="lazy"><div><div class="label">Chapter ${n}</div><h3>${esc(t)}</h3>${u ? `<a class="btn" href="${u}" target="_blank" rel="noopener">Watch the play</a>` : `<span class="btn off">Video coming soon</span>`}</div></article>`).join('');
 document.getElementById('moregrid').innerHTML = MORE.map(([t,p,u]) => `<article class="poem"><h3>${esc(t)}</h3><p>${esc(p)}</p>${u ? `<a class="btn" href="${u}" target="_blank" rel="noopener">Watch</a>` : ''}</article>`).join('');
